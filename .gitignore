@@ -1,28 +1,97 @@
-# Terraform state files - contain sensitive data, never commit
+# ==========================================
+# 1. TERRAFORM CORE FILES
+# ==========================================
+
+# Local .terraform directories and downloaded plugins
+**/.terraform/
+**/.terraform.lock.hcl
+
+
+# Terraform state files (CRITICAL: contain sensitive raw state and infrastructure data)
 **/*.tfstate
 **/*.tfstate.*
 **/*.tfstate.backup
 
-# Terraform working directory
-**/.terraform/
-**/.terraform.lock.hcl
-
-# Variable files that may contain secrets
-**/*.tfvars
-**/*.tfvars.json
+# Saved binary execution plans
+**/*.tfplan
+**/*.tfplan.*
+tfplan
 
 # Crash logs
 **/crash.log
 **/crash.*.log
 
-# Override files
+# Override files (used for local testing and overrides)
 **/override.tf
 **/override.tf.json
 **/*_override.tf
+**/*_override.tf.json
 
-# SSH keys - never commit private keys
+# ==========================================
+# 2. SECRETS, CREDENTIALS & KEYS
+# ==========================================
+
+# Variable files containing sensitive values / passwords
+**/*.tfvars
+**/*.tfvars.json
+!**/example.tfvars
+!**/sample.tfvars
+
+# Private keys, certificates, and SSH key pairs
 *.pem
+*.key
+*.pfx
+*.p12
+*.ppk
 id_rsa
 id_rsa.pub
+*_rsa
+*_rsa.pub
 terraform-ec2-key
 terraform-ec2-key.pub
+
+# Local cloud credentials and environment files
+**/.aws/
+**/credentials
+**/secrets.*
+**/.env
+*.env
+*.secret
+
+
+# ==========================================
+# 3. IDE & EDITOR CONFIGURATIONS
+# ==========================================
+
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+
+# JetBrains IDEs (IntelliJ, PyCharm, etc.)
+.idea/
+
+# Vim / Nano swap files
+*.swp
+*.swo
+*~
+
+
+# ==========================================
+# 4. OPERATING SYSTEM JUNKS
+# ==========================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+.Trash-*
