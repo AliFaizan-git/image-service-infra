@@ -14,3 +14,9 @@ variable "environment" {
     error_message = "environment must be either \"dev\" or \"prod\"."
   }
 }
+
+variable "github_owner" {
+    description = "Github username"
+    type = string
+  
+}
