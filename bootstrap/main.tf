@@ -1,8 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 locals {
-  bucket_name = "${var.project
-  }-tfstate-10-2026"
+  bucket_name = "${var.project}-tfstate-10-2026"
 
 }
 
@@ -94,9 +93,9 @@ data "aws_iam_policy_document" "tls_only" {
 }
 
 resource "aws_s3_bucket_policy" "state" {
-    bucket = aws_s3_bucket.state.id
-    policy = data.aws_iam_policy_document.tls_only.json
+  bucket = aws_s3_bucket.state.id
+  policy = data.aws_iam_policy_document.tls_only.json
 
-    depends_on = [ aws_s3_bucket_public_access_block.state ]
-  
+  depends_on = [aws_s3_bucket_public_access_block.state]
+
 }
