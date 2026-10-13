@@ -102,12 +102,13 @@ data "aws_iam_policy_document" "plan_state_lock" {
 module "github_oidc" {
   source      = "../../modules/github-oidc"
   name_prefix = local.name_prefix
+  github_owner = var.github_owner
 
   roles = {
     infra-plan = {
-      subjects            = ["$local.gh.infra:pull_request"]
+      subjects            = ["${local.gh.infra}:pull_request"]
       managed_policy_arns = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
-      policy_json         = data.aws_iam_policy_document.plan_state_lock
+      policy_json         = data.aws_iam_policy_document.plan_state_lock.json
     }
 
     infra-apply = {
