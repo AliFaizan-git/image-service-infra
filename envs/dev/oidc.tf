@@ -100,8 +100,8 @@ data "aws_iam_policy_document" "plan_state_lock" {
 }
 
 module "github_oidc" {
-  source      = "../../modules/github-oidc"
-  name_prefix = local.name_prefix
+  source       = "../../modules/github-oidc"
+  name_prefix  = local.name_prefix
   github_owner = var.github_owner
 
   roles = {
@@ -117,17 +117,22 @@ module "github_oidc" {
     }
 
     backend = {
-      subjects    = ["${local.gh.backend}:ref:refs/heads/main"]
-      policy_json = data.aws_iam_policy_document.app["backend"].json
+      subjects            = ["${local.gh.backend}:ref:refs/heads/main"]
+      managed_policy_arns = []
+      policy_json         = data.aws_iam_policy_document.app["backend"].json
     }
 
     frontend = {
-      subjects    = ["${local.gh.frontend}:ref:refs/heads/main"]
+      subjects            = ["${local.gh.frontend}:ref:refs/heads/main"]
+      managed_policy_arns = []
+
       policy_json = data.aws_iam_policy_document.app["frontend"].json
     }
 
     lambda = {
-      subjects    = ["${local.gh.lambda}:ref:refs/heads/main"]
+      subjects            = ["${local.gh.lambda}:ref:refs/heads/main"]
+      managed_policy_arns = []
+
       policy_json = data.aws_iam_policy_document.lambda.json
     }
   }

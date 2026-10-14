@@ -16,7 +16,7 @@ variable "environment" {
 }
 
 variable "github_owner" {
-    description = "Github username"
-    type = string
-  
+  description = "Github username"
+  type        = string
+
 }

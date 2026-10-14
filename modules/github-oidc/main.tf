@@ -34,7 +34,7 @@ data "aws_iam_policy_document" "trust" {
 
 resource "aws_iam_role" "this" {
   for_each             = var.roles
-  name                 = "${var.name_prefix}-gh-${eack.key}"
+  name                 = "${var.name_prefix}-gh-${each.key}"
   assume_role_policy   = data.aws_iam_policy_document.trust[each.key].json
   max_session_duration = var.max_session_duration
 }
