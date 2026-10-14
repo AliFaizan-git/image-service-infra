@@ -4,7 +4,7 @@ locals {
 }
 
 resource "aws_vpc" "this" {
-  cidr_block           = var.cidr
+  cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
@@ -25,7 +25,7 @@ resource "aws_subnet" "public" {
 
   vpc_id            = aws_vpc.this.id
   availability_zone = var.azs[count.index]
-  cidr_block        = cidrsubnet(var.cidr, 4, count.index)
+  cidr_block        = cidrsubnet(var.vpc_cidr, 4, count.index)
 
   tags = {
     NAME = "${var.name}-public-${var.azs[count.index]}"
@@ -39,7 +39,7 @@ resource "aws_subnet" "private" {
 
   vpc_id            = aws_vpc.this.id
   availability_zone = var.azs[count.index]
-  cidr_block        = cidrsubnet(var.cidr, 4, count.index + 4)
+  cidr_block        = cidrsubnet(var.vpc_cidr, 4, count.index + 4)
 
   tags = {
     Name = "${var.name}-private-${var.azs[count.index]}"

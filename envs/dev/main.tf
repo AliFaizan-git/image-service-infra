@@ -9,7 +9,7 @@ module "vpc" {
 
   name               = "image"
   region             = var.region
-  cidr               = var.vpc_cidr
+  vpc_cidr               = var.vpc_cidr
   azs                = slice(data.aws_availability_zones.available.names, 0, 2)
   single_nat_gateway = var.single_nat_gateway
 }
@@ -20,7 +20,7 @@ module "ecr" {
   repositories = [
     "${var.project}/backend",
     "${var.project}/frontend",
-    "image-processor-lambda"
+    "image-processor/lambda"
   ]
   force_delete = var.allow_force_destroy
 }

@@ -1,6 +1,6 @@
 variable "repositories" {
   description = "ECR repo names"
-  type        = string
+  type        = list(string)
 
 }
 

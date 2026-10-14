@@ -26,5 +26,5 @@ output "ecr_repository_urls" {
 }
 
 output "images_bucket" {
-  value = module.s3_images.bucket_name
+  value = module.s3.bucket_name
 }
