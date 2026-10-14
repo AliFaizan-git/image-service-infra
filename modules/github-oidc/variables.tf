@@ -15,9 +15,9 @@ variable "max_session_duration" {
   type        = number
 }
 variable "github_owner" {
-    description = "Github username"
-    type = string
-  
+  description = "Github username"
+  type        = string
+
 }
 
 variable "roles" {

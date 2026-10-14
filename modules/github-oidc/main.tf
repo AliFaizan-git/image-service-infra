@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "trust" {
   for_each = var.roles
 
   statement {
-    effect = "Allow"
+    effect  = "Allow"
     actions = ["sts:AssumeRoleWithWebIdentity"]
 
     principals {

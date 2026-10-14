@@ -9,3 +9,22 @@ output "name_prefix" {
 output "github_role_arns" {
   value = module.github_oidc.role_arns
 }
+output "vpc_id" {
+  value = module.vpc.vpc_id
+}
+
+output "public_subnet_ids" {
+  value = module.vpc.public_subnet_ids
+}
+
+output "private_subnet_ids" {
+  value = module.vpc.private_subnet_ids
+}
+
+output "ecr_repository_urls" {
+  value = module.ecr.repository_urls
+}
+
+output "images_bucket" {
+  value = module.s3_images.bucket_name
+}

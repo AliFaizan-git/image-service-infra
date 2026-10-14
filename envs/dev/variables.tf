@@ -20,3 +20,19 @@ variable "github_owner" {
   type        = string
 
 }
+
+variable "vpc_cidr" {
+  type    = string
+  default = "0.0.0.0/0"
+
+}
+
+variable "single_nat_gateway" {
+  type    = bool
+  default = true
+
+}
+variable "allow_force_destroy" {
+  type    = bool
+  default = true
+}
