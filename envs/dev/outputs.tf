@@ -36,3 +36,11 @@ output "rds_address" {
 output "master_secret_arn" {
   value = module.rds.master_secret_arn
 }
+
+output "alb_dns_name" {
+  value = module.alb.dns_name
+}
+
+output "ecs_cluster_name" {
+  value = module.ecs.cluster_name
+}
