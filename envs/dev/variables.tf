@@ -36,3 +36,18 @@ variable "allow_force_destroy" {
   type    = bool
   default = true
 }
+
+variable "db_multi_az" {
+  type    = bool
+  default = false
+}
+
+variable "db_deletion_protection" {
+  type    = bool
+  default = false
+}
+
+variable "db_skip_final_snapshot" {
+  type    = bool
+  default = true
+}

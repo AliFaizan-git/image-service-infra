@@ -28,3 +28,11 @@ output "ecr_repository_urls" {
 output "images_bucket" {
   value = module.s3.bucket_name
 }
+
+output "rds_address" {
+  value = module.rds.address
+}
+
+output "master_secret_arn" {
+  value = module.rds.master_secret_arn
+}
