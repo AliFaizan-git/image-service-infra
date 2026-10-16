@@ -52,8 +52,12 @@ module "ecs" {
   vpc_id                = module.vpc.vpc_id
   private_subnet_ids    = module.vpc.private_subnet_ids
   alb_security_group_id = module.alb.security_group_id
-  secret_arns           = [module.rds.master_secret_arn]
+  secret_arns = [
+    module.rds.master_secret_arn,
+    aws_secretsmanager_secret.callback.arn,
+    aws_secretsmanager_secret.app.arn,
 
+  ]
   services = {
     backend = {
       image            = "${local.ecr_backend}:${var.image_tag}"
@@ -73,10 +77,13 @@ module "ecs" {
         AWS_REGION  = var.region
       }
 
-      # Secrets Manager se, plain env mein kabhi nahi
       secrets = {
-        DB_USER     = "${module.rds.master_secret_arn}:username::"
-        DB_PASSWORD = "${module.rds.master_secret_arn}:password::"
+        DB_USER         = "${module.rds.master_secret_arn}:username::"
+        DB_PASSWORD     = "${module.rds.master_secret_arn}:password::"
+        CALLBACK_SECRET = aws_secretsmanager_secret.callback.arn
+        JWT_SECRET      = "${aws_secretsmanager_secret.app.arn}:jwt_secret::"
+
+
       }
     }
 

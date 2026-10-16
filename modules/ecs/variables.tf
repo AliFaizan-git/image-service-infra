@@ -41,6 +41,6 @@ variable "services" {
 }
 
 variable "task_role_policies" {
-  type = map(string)
+  type    = map(string)
   default = {}
-  }
+}
