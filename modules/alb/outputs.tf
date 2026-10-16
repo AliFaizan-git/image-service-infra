@@ -7,6 +7,6 @@ output "security_group_id" {
 }
 
 output "target_group_arns" {
-  value = { for k, tg in awsaws_lb_target_group.this : k => tg.arn }
+  value = { for k, tg in aws_lb_target_group.this : k => tg.arn }
 
 }

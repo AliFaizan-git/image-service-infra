@@ -163,9 +163,4 @@ resource "aws_ecs_service" "this" {
     container_name   = each.key
     container_port   = each.value.port
   }
-
-  # Deploy CI/CD karega (naya task def revision), Terraform usse revert na kare
-  lifecycle {
-    ignore_changes = [task_definition]
-  }
 }

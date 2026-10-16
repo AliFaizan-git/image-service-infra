@@ -23,9 +23,10 @@ module "ecr" {
     "image-processor/lambda"
   ]
   force_delete = var.allow_force_destroy
+  image_tag_mutability = "MUTABLE"
 }
 
-module "s3" {
+module "s3_images" {
   source        = "../../modules/s3"
   bucket_name   = "${local.name_prefix}-images-${local.account_id}"
   force_destroy = var.allow_force_destroy

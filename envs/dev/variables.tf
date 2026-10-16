@@ -59,7 +59,6 @@ variable "desired_count" {
 }
 
 variable "image_tag" {
-  description = "first bootstrap image tag"
   type        = string
-  default     = "bootstrap"
+  default     = "latest"
 }

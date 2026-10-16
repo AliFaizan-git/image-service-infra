@@ -14,3 +14,13 @@ variable "force_delete" {
   type        = bool
   default     = true
 }
+
+variable "image_tag_mutability" {
+     type    = string
+     default = "IMMUTABLE"
+
+     validation {
+       condition     = contains(["MUTABLE", "IMMUTABLE"], var.image_tag_mutability)
+       error_message = "Must be MUTABLE or IMMUTABLE."
+     }
+   }

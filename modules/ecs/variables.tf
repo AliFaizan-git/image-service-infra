@@ -27,16 +27,16 @@ variable "log_retention_days" {
 }
 
 variable "services" {
+  description = "service key => container config"
   type = map(object({
     image            = string
     port             = number
     target_group_arn = string
     cpu              = optional(number, 256)
-    memory           = optiona(number, 512)
+    memory           = optional(number, 512)
     desired_count    = optional(number, 1)
-    secreccts        = optional(map(string), {})
-    environments     = optional(map(string), {})
-
+    environment      = optional(map(string), {})
+    secrets          = optional(map(string), {}) # ENV_NAME => secret ARN (ya ARN:key::)
   }))
 }
 
