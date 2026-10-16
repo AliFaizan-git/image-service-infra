@@ -51,3 +51,15 @@ variable "db_skip_final_snapshot" {
   type    = bool
   default = true
 }
+
+variable "desired_count" {
+  description = "ECS tasks per service,"
+  type        = number
+  default     = 1
+}
+
+variable "image_tag" {
+  description = "first bootstrap image tag"
+  type        = string
+  default     = "bootstrap"
+}

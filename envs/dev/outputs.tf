@@ -44,3 +44,11 @@ output "alb_dns_name" {
 output "ecs_cluster_name" {
   value = module.ecs.cluster_name
 }
+
+output "alb_dns_name" {
+  value = module.alb.dns_name
+}
+
+output "ecs_cluster_name" {
+  value = module.ecs.cluster_name
+}
