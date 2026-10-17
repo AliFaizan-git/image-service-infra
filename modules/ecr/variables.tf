@@ -16,11 +16,11 @@ variable "force_delete" {
 }
 
 variable "image_tag_mutability" {
-     type    = string
-     default = "IMMUTABLE"
+  type    = string
+  default = "IMMUTABLE"
 
-     validation {
-       condition     = contains(["MUTABLE", "IMMUTABLE"], var.image_tag_mutability)
-       error_message = "Must be MUTABLE or IMMUTABLE."
-     }
-   }
+  validation {
+    condition     = contains(["MUTABLE", "IMMUTABLE"], var.image_tag_mutability)
+    error_message = "Must be MUTABLE or IMMUTABLE."
+  }
+}

@@ -59,6 +59,11 @@ variable "desired_count" {
 }
 
 variable "image_tag" {
-  type        = string
-  default     = "latest"
+  type    = string
+  default = "latest"
+}
+
+variable "enable_sqs" {
+  type    = bool
+  default = false
 }

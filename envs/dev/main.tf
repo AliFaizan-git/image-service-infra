@@ -22,7 +22,7 @@ module "ecr" {
     "${var.project}/frontend",
     "image-processor/lambda"
   ]
-  force_delete = var.allow_force_destroy
+  force_delete         = var.allow_force_destroy
   image_tag_mutability = "MUTABLE"
 }
 
