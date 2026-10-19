@@ -78,10 +78,10 @@ module "ecs" {
       }
 
       secrets = {
-        DB_USER         = "${module.rds.master_secret_arn}:username::"
-        DB_PASSWORD     = "${module.rds.master_secret_arn}:password::"
-        CALLBACK_SECRET = aws_secretsmanager_secret.callback.arn
-        JWT_SECRET      = "${aws_secretsmanager_secret.app.arn}:jwt_secret::"
+        DB_USER        = "${module.rds.master_secret_arn}:username::"
+        DB_PASSWORD    = "${module.rds.master_secret_arn}:password::"
+        LAMBDA_API_KEY = aws_secretsmanager_secret.callback.arn
+        JWT_SECRET     = "${aws_secretsmanager_secret.app.arn}:jwt_secret::"
 
 
       }
@@ -100,7 +100,11 @@ module "ecs" {
   }
 
   # Target group ko listener rule se associate hona zaroori hai service banne se pehle
-  depends_on = [module.alb]
+  depends_on = [
+    module.alb,
+    aws_secretsmanager_secret_version.app,
+    aws_secretsmanager_secret_version.callback,
+  ]
 }
 
 # Glue rule: RDS sirf ECS SG se 5432 pe baat kare
